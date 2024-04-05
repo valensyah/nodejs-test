@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/public/stylesheets/style.css"> -->
+    <title>Soal 1</title>
+</head>
+<body>
+    <p>Soal 1</p>
+    <form action="/soal-1" method="POST">
+        <label for="">Tujuan Rumah</label>
+        <input type="text" name="home" value="<%= home %>">
+
+        <button type="submit">Cari</button>
+    </form>
+
+    <% if (data) { %>
+        <ol>
+            <% data.forEach(item => {%>
+                <li><%= item %></li>
+            <% }) %>
+        </ol>
+    <% } %>
+
+    <p>Soal 2</p>
+    <input type="text" onchange="bracketValidation(this)" value="">
+    <p id="resultValidation"></p>
+
+    <script>
+        const bracketValidation = (val) => {
+            let value = val.value
+            const openBracket = ['{', '['];
+            const closeBracket = ['}', ']'];
+
+            let splitVal = value.split('')
+            console.log(splitVal)
+            let openBracket1 = splitVal.filter(x => x === openBracket[0]).length
+            let openBracket2 = splitVal.filter(x => x === openBracket[1]).length
+            let closeBracket1 = splitVal.filter(x => x === closeBracket[0]).length
+            let closeBracket2 = splitVal.filter(x => x === closeBracket[1]).length
+
+            console.log(openBracket1, openBracket2, closeBracket1, closeBracket2)
+            let matchBracket1 = openBracket1 === closeBracket1 ? true : false
+            let matchBracket2 = openBracket2 === closeBracket2 ? true : false
+            console.log(matchBracket1, matchBracket2)
+
+            if (matchBracket1 && matchBracket2) {
+                document.getElementById("resultValidation").innerText = "Valid"
+            } else {
+                document.getElementById("resultValidation").innerText = "Not Valid"
+            }
+
+            if (splitVal[0] === openBracket[0]) {
+                for(let i = 0; i < openBracket1; i++) {
+                    if (splitVal[i] !== openBracket[0]) {
+                        document.getElementById("resultValidation").innerText = "Not Valid";
+                        return false
+                    }
+                }
+            }
+
+            if (splitVal[0] === openBracket[1]) {
+                for(let i = 0; i < openBracket2; i++) {
+                    if (splitVal[i] !== openBracket[1]) {
+                        document.getElementById("resultValidation").innerText = "Not Valid";
+                        return false
+                    }
+                }
+            }
+
+            for(let i = splitVal.length / 2; i < splitVal.length - closeBracket1; i++) {
+                if (splitVal[i] !== closeBracket[1]) {
+                    document.getElementById("resultValidation").innerText = "Not Valid";
+                    return false
+                }
+            }
+        }
+    </script>
+</body>
+</html>

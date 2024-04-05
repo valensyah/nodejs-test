@@ -1,0 +1,19 @@
+body {
+  background: rgb(16, 36, 52);
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.content p {
+  color: white;
+  font-size: xx-large;
+}
