@@ -103,12 +103,14 @@ exports.soalSatu = (req, res) => {
             ]
         },
     ]
-
+    console.log('01')
     const step = homeDirection.filter(item => item.home === home.toUpperCase());
-
-    if (!step) {
-        return res.json({
-            data: []
+    console.log('11')
+    if (!step || step.length === 0) {
+        return res.render('home', {
+            home: '',
+            // data: null
+            data: ['Rumah tujuan tidak ditemukan!']
         })
     }
 

@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="/public/stylesheets/style.css"> -->
     <title>Soal 1</title>
+
+    <style>
+        .soal-1-img {
+            margin: 10px 0px;
+        }
+    </style>
 </head>
 <body>
     <p>Soal 1</p>
+    <img class="soal-1-img" src="/images/home-direction.png" width="500" alt="">
     <form action="/soal-1" method="POST">
         <label for="">Tujuan Rumah</label>
         <input type="text" name="home" value="<%= home %>">
